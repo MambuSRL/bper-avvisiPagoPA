@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://schema.tipi.testata.common.ws.popso.it/v8"
+	xmlns:tns="http://schema.tipi.testata.common.ws.popso.it/v8"	
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified">            
+	
+
+	<!--
+		================================= Tipi testata
+		======================================
+	-->
+
+	<xsd:simpleType name="CodiceCanale">
+		<xsd:annotation>
+			
+		<xsd:documentation>&amp;nbsp; 
+&lt;p&gt;
+    Nuovo&amp;nbsp;Sportello - NSP
+&lt;/p&gt;
+&lt;p&gt;
+    FrontEnd Commerciale - FEC
+&lt;/p&gt;
+&lt;p&gt;
+    Internet - ITN
+&lt;/p&gt;
+&lt;p&gt;
+    ATM - ATM
+&lt;/p&gt;
+&lt;p&gt;
+    POS - POS
+&lt;/p&gt;
+&lt;p&gt;
+    Banca telefonica - IVR
+&lt;/p&gt;
+&lt;p&gt;
+    Mobile - MBN
+&lt;/p&gt;
+&lt;p&gt;
+    Corporate banking - CBK
+&lt;/p&gt;
+&lt;p&gt;
+    Altri canali innovativi - ACN
+&lt;/p&gt;
+&lt;p&gt;
+    Interbancario - IBR
+&lt;/p&gt;
+&lt;p&gt;
+    Business2Business - B2B
+&lt;/p&gt;
+&lt;p&gt;
+    Batch - BTC
+&lt;/p&gt;
+&lt;p&gt;
+    Intranet - ITR
+&lt;/p&gt;
+&lt;p&gt;
+    Canale di test - TST
+&lt;/p&gt;
+Internet Prospect - IPR&amp;nbsp;&lt;br /&gt;</xsd:documentation></xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="NSP"></xsd:enumeration>
+			<xsd:enumeration value="FEC"></xsd:enumeration>
+			<xsd:enumeration value="ITN"></xsd:enumeration>
+			<xsd:enumeration value="ATM"></xsd:enumeration>
+			<xsd:enumeration value="POS"></xsd:enumeration>
+			<xsd:enumeration value="IVR"></xsd:enumeration>
+			<xsd:enumeration value="MBN"></xsd:enumeration>
+			<xsd:enumeration value="CBK"></xsd:enumeration>
+			<xsd:enumeration value="ACN"></xsd:enumeration>
+			<xsd:enumeration value="IBR"></xsd:enumeration>
+			<xsd:enumeration value="B2B"></xsd:enumeration>
+			<xsd:enumeration value="BTC"></xsd:enumeration>
+			<xsd:enumeration value="ITR"></xsd:enumeration>
+			<xsd:enumeration value="TST"></xsd:enumeration>
+			<xsd:enumeration value="IPR"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="CodiceApplicazione">
+		<xsd:annotation>
+			<xsd:documentation>Codice Identificativo Applicazione 
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:maxLength value="8" />
+			<xsd:minLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="CodiceOperazione">
+		<xsd:annotation>
+			<xsd:documentation>Codice identificativo univoco di
+				un'operazione
+				(generato dall'applicazione)
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:maxLength value="20" />
+			<xsd:minLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+	<xsd:simpleType name="StringaNonVuota">
+		<xsd:annotation>
+			<xsd:documentation>Stringa Non Vuota
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:minLength value="1"></xsd:minLength>
+			<xsd:pattern value="[^ ].*"></xsd:pattern>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="CodiceFiliale">
+		<xsd:restriction base="xsd:token">
+			<xsd:minLength value="1" />
+			<xsd:maxLength value="5" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	
+	<xsd:simpleType name="MatricolaOperatore">
+		<xsd:annotation>
+			<xsd:documentation>Codice Operatore / Matricola
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:minLength value="1" />
+			<xsd:maxLength value="8" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+   <xsd:complexType name="Ndg">
+		<xsd:sequence>
+			<xsd:element name="tipoNdg" type="tns:TipoCliente" />
+			<xsd:element name="codiceNdg" type="tns:CodiceNdg" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	
+	<xsd:simpleType name="CodiceNdg">
+		<xsd:annotation>
+			<xsd:documentation>Numero Direzione Generale (Identificativo del
+				Cliente ad uso interno bancario)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:pattern value="[0-9]{1,12}" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="TipoCliente">
+		<xsd:annotation>
+			<xsd:documentation>Tipo Cliente (Cliente  vs. Non_Cliente (Prospect e Occasionale))
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="CLIENTE" />
+			<xsd:enumeration value="NON_CLIENTE_PROSPECT" />
+			<xsd:enumeration value="NON_CLIENTE_OCCASIONALE" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	
+	
+	<xsd:complexType name="Utente">
+		<xsd:sequence>
+			<xsd:element name="tipoUtente" type="tns:TipoUtente" />
+			<xsd:element name="identificativoUtente" type="tns:IdentificativoUtente" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="IdentificativoUtente">
+		<xsd:choice>
+			<xsd:element name="matricolaOperatore" type="tns:MatricolaOperatore" />
+			<xsd:element name="idUtente" type="tns:IdUtente" />
+		</xsd:choice>
+	</xsd:complexType>
+
+	<xsd:simpleType name="TipoUtente">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Scrigno" />
+			<xsd:enumeration value="Intranet" />
+			<xsd:enumeration value="Prospect" />
+			<xsd:enumeration value="ATM" />
+			<xsd:enumeration value="CassaPrevidenza" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="IdUtente">
+		<xsd:restriction base="xsd:token">
+			<xsd:maxLength value="40" />
+			<xsd:minLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+
+	<xsd:simpleType name="CodiceAbi">
+		<xsd:annotation>
+			<xsd:documentation>Codice ABI</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:pattern value="[0-9]{5}" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+
+</xsd:schema>

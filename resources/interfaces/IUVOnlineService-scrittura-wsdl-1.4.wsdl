@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="IUVOnlineService_v1" 
+targetNamespace="http://scrittura.iuvonline.nodospcit.ws.popso.it/v1" 
+xmlns:bons1="http://schema.fault.testata.common.ws.popso.it/v8" 
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+xmlns:tns="http://scrittura.iuvonline.nodospcit.ws.popso.it/v1" 
+xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:xsd1="http://schema.iuvonline.nodospcit.ws.popso.it/v1">
+	<wsdl:types>
+		<xsd:schema>
+			<xsd:import namespace="http://schema.iuvonline.nodospcit.ws.popso.it/v1" schemaLocation="../schema/IUVOnlineSchema_v1.4.xsd">
+			</xsd:import>
+		</xsd:schema>
+		<xsd:schema targetNamespace="http://scrittura.iuvonline.nodospcit.ws.popso.it/v1">
+			<xsd:import namespace="http://schema.iuvonline.nodospcit.ws.popso.it/v1" schemaLocation="../schema/IUVOnlineSchema_v1.4.xsd"/>
+			<xsd:import namespace="http://schema.fault.testata.common.ws.popso.it/v8" schemaLocation="../schema/TipiTestata_v8.0/fault/FaultSchema_v8.0.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="IUVOnlineCreateRequest">
+		<wsdl:part name="IUVOnlineCreateRequest" element="xsd1:IUVOnlineCreateRequest"/>
+	</wsdl:message>
+
+	<wsdl:message name="IUVOnlineCreateResponse">
+		<wsdl:part name="IUVOnlineCreateResponse" element="xsd1:IUVOnlineCreateResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="IUVOnlineUpdateRequest">
+		<wsdl:part name="IUVOnlineUpdateRequest" element="xsd1:IUVOnlineUpdateRequest"/>
+	</wsdl:message>
+
+	<wsdl:message name="IUVOnlineUpdateResponse">
+		<wsdl:part name="IUVOnlineUpdateResponse" element="xsd1:IUVOnlineUpdateResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="IUVOnlineDeleteRequest">
+		<wsdl:part name="IUVOnlineDeleteRequest" element="xsd1:IUVOnlineDeleteRequest"/>
+	</wsdl:message>
+
+	<wsdl:message name="IUVOnlineDeleteResponse">
+		<wsdl:part name="IUVOnlineDeleteResponse" element="xsd1:IUVOnlineDeleteResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="getRTListRequest">
+		<wsdl:part name="getRTListRequest" element="xsd1:getRTListRequest"/>
+	</wsdl:message>
+
+	<wsdl:message name="getRTListResponse">
+		<wsdl:part name="getRTListResponse" element="xsd1:getRTListResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="getRTReadRequest">
+		<wsdl:part name="getRTReadRequest" element="xsd1:getRTReadRequest"/>
+	</wsdl:message>
+
+	<wsdl:message name="getRTReadResponse">
+		<wsdl:part name="getRTReadResponse" element="xsd1:getRTReadResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="sendAckRTUpdateRequest">
+		<wsdl:part name="sendAckRTUpdateRequest" element="xsd1:sendAckRTUpdateRequest"/>
+	</wsdl:message>
+
+	<wsdl:message name="sendAckRTUpdateResponse">
+		<wsdl:part name="sendAckRTUpdateResponse" element="xsd1:sendAckRTUpdateResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="getAvvisoPdfReadRequest">
+		<wsdl:part name="getAvvisoPdfReadRequest" element="xsd1:getAvvisoPdfReadRequest"/>
+	</wsdl:message>
+
+	<wsdl:message name="getAvvisoPdfReadResponse">
+		<wsdl:part name="getAvvisoPdfReadResponse" element="xsd1:getAvvisoPdfReadResponse"/>
+	</wsdl:message>
+	<wsdl:message name="getRicevutaPagamentoPdfReadResponse">
+		<wsdl:part name="getRicevutaPagamentoPdfReadResponse" element="xsd1:getRicevutaPagamentoPdfReadResponse"/>
+	</wsdl:message>
+	<wsdl:message name="getRicevutaPagamentoPdfReadRequest">
+		<wsdl:part name="getRicevutaPagamentoPdfReadRequest" element="xsd1:getRicevutaPagamentoPdfReadRequest"/>
+	</wsdl:message>
+
+
+	<!-- Fault -->
+	<wsdl:message name="systemFaultMsg">
+		<wsdl:part name="systemFault" element="bons1:systemFault"/>
+	</wsdl:message>
+	<wsdl:message name="inputFaultMsg">
+		<wsdl:part name="inputFault" element="bons1:inputFault"/>
+	</wsdl:message>
+	<wsdl:message name="applicationFaultMsg">
+		<wsdl:part name="applicationFault" element="bons1:applicationFault"/>
+	</wsdl:message>
+	<wsdl:message name="servizioNonDisponibileFaultMsg">
+		<wsdl:part name="servizioNonDisponibileFault" element="bons1:servizioNonDisponibileFault"/>
+	</wsdl:message>
+	<wsdl:message name="datiTestataFaultMsg">
+		<wsdl:part name="datiTestataFault" element="bons1:datiTestataFault"/>
+	</wsdl:message>
+
+	<wsdl:portType name="IUVOnlineServiceScritturaPortType_v1">
+		<wsdl:operation name="IUVOnlineCreate">
+			<wsdl:input message="tns:IUVOnlineCreateRequest"/>
+			<wsdl:output message="tns:IUVOnlineCreateResponse"/>
+			<wsdl:fault name="IUVOnlineCreateApplicationFault" message="tns:applicationFaultMsg"/>
+			<wsdl:fault name="IUVOnlineCreateSystemFault" message="tns:systemFaultMsg"/>
+			<wsdl:fault name="IUVOnlineCreateDatiTestataFault" message="tns:datiTestataFaultMsg"/>
+			<wsdl:fault name="IUVOnlineCreateInputFault" message="tns:inputFaultMsg"/>
+			<wsdl:fault name="IUVOnlineCreateServizioNonDisponibileFault" message="tns:servizioNonDisponibileFaultMsg"/>
+		</wsdl:operation>
+		<wsdl:operation name="IUVOnlineUpdate">
+			<wsdl:input message="tns:IUVOnlineUpdateRequest"/>
+			<wsdl:output message="tns:IUVOnlineUpdateResponse"/>
+			<wsdl:fault name="IUVOnlineUpdateApplicationFault" message="tns:applicationFaultMsg"/>
+			<wsdl:fault name="IUVOnlineUpdateSystemFault" message="tns:systemFaultMsg"/>
+			<wsdl:fault name="IUVOnlineUpdateDatiTestataFault" message="tns:datiTestataFaultMsg"/>
+			<wsdl:fault name="IUVOnlineUpdateInputFault" message="tns:inputFaultMsg"/>
+			<wsdl:fault name="IUVOnlineUpdateServizioNonDisponibileFault" message="tns:servizioNonDisponibileFaultMsg"/>
+		</wsdl:operation>
+		<wsdl:operation name="IUVOnlineDelete">
+			<wsdl:input message="tns:IUVOnlineDeleteRequest"/>
+			<wsdl:output message="tns:IUVOnlineDeleteResponse"/>
+			<wsdl:fault name="IUVOnlineDeleteApplicationFault" message="tns:applicationFaultMsg"/>
+			<wsdl:fault name="IUVOnlineDeleteSystemFault" message="tns:systemFaultMsg"/>
+			<wsdl:fault name="IUVOnlineDeleteDatiTestataFault" message="tns:datiTestataFaultMsg"/>
+			<wsdl:fault name="IUVOnlineDeleteInputFault" message="tns:inputFaultMsg"/>
+			<wsdl:fault name="IUVOnlineDeleteServizioNonDisponibileFault" message="tns:servizioNonDisponibileFaultMsg"/>
+		</wsdl:operation>
+		<wsdl:operation name="getRTList">
+			<wsdl:input message="tns:getRTListRequest"/>
+			<wsdl:output message="tns:getRTListResponse"/>
+			<wsdl:fault name="getRTListApplicationFault" message="tns:applicationFaultMsg"/>
+			<wsdl:fault name="getRTListSystemFault" message="tns:systemFaultMsg"/>
+			<wsdl:fault name="getRTListDatiTestataFault" message="tns:datiTestataFaultMsg"/>
+			<wsdl:fault name="getRTListInputFault" message="tns:inputFaultMsg"/>
+			<wsdl:fault name="getRTListServizioNonDisponibileFault" message="tns:servizioNonDisponibileFaultMsg"/>
+		</wsdl:operation>
+		<wsdl:operation name="getRTRead">
+			<wsdl:input message="tns:getRTReadRequest"/>
+			<wsdl:output message="tns:getRTReadResponse"/>
+			<wsdl:fault name="getRTReadApplicationFault" message="tns:applicationFaultMsg"/>
+			<wsdl:fault name="getRTReadSystemFault" message="tns:systemFaultMsg"/>
+			<wsdl:fault name="getRTReadDatiTestataFault" message="tns:datiTestataFaultMsg"/>
+			<wsdl:fault name="getRTReadInputFault" message="tns:inputFaultMsg"/>
+			<wsdl:fault name="getRTReadServizioNonDisponibileFault" message="tns:servizioNonDisponibileFaultMsg"/>
+		</wsdl:operation>
+		<wsdl:operation name="sendAckRTUpdate">
+			<wsdl:input message="tns:sendAckRTUpdateRequest"/>
+			<wsdl:output message="tns:sendAckRTUpdateResponse"/>
+			<wsdl:fault name="sendAckRTUpdateApplicationFault" message="tns:applicationFaultMsg"/>
+			<wsdl:fault name="sendAckRTUpdateSystemFault" message="tns:systemFaultMsg"/>
+			<wsdl:fault name="sendAckRTUpdateDatiTestataFault" message="tns:datiTestataFaultMsg"/>
+			<wsdl:fault name="sendAckRTUpdateInputFault" message="tns:inputFaultMsg"/>
+			<wsdl:fault name="sendAckRTUpdateServizioNonDisponibileFault" message="tns:servizioNonDisponibileFaultMsg"/>
+		</wsdl:operation>
+		<wsdl:operation name="getAvvisoPdfRead">
+			<wsdl:input message="tns:getAvvisoPdfReadRequest"/>
+			<wsdl:output message="tns:getAvvisoPdfReadResponse"/>
+			<wsdl:fault name="getAvvisoPdfReadApplicationFault" message="tns:applicationFaultMsg"/>
+			<wsdl:fault name="getAvvisoPdfReadSystemFault" message="tns:systemFaultMsg"/>
+			<wsdl:fault name="getAvvisoPdfReadDatiTestataFault" message="tns:datiTestataFaultMsg"/>
+			<wsdl:fault name="getAvvisoPdfReadInputFault" message="tns:inputFaultMsg"/>
+			<wsdl:fault name="getAvvisoPdfReadServizioNonDisponibileFault" message="tns:servizioNonDisponibileFaultMsg"/>
+		</wsdl:operation>
+		<wsdl:operation name="getRicevutaPagamentoPdfRead">
+			<wsdl:input message="tns:getRicevutaPagamentoPdfReadRequest"/>
+			<wsdl:output message="tns:getRicevutaPagamentoPdfReadResponse"/>
+			<wsdl:fault name="getRicevutaPagamentoPdfReadApplicationFault" message="tns:applicationFaultMsg"/>
+			<wsdl:fault name="getRicevutaPagamentoPdfReadSystemFault" message="tns:systemFaultMsg"/>
+			<wsdl:fault name="getRicevutaPagamentoPdfReadDatiTestataFault" message="tns:datiTestataFaultMsg"/>
+			<wsdl:fault name="getRicevutaPagamentoPdfReadInputFault" message="tns:inputFaultMsg"/>
+			<wsdl:fault name="getRicevutaPagamentoPdfReadServizioNonDisponibileFault" message="tns:servizioNonDisponibileFaultMsg"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="IUVOnlineServiceScritturaBinding_v1" type="tns:IUVOnlineServiceScritturaPortType_v1">
+
+		<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="IUVOnlineCreate">
+
+			<soap:operation
+  			soapAction="http://scrittura.iuvonline.nodospcit.ws.popso.it/v1/IUVOnlineCreate" />
+			<wsdl:input>
+
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="IUVOnlineCreateApplicationFault">
+
+				<soap:fault use="literal"
+  				name="IUVOnlineCreateApplicationFault" />
+			</wsdl:fault>
+			<wsdl:fault name="IUVOnlineCreateSystemFault">
+
+				<soap:fault use="literal"
+  				name="IUVOnlineCreateSystemFault" />
+			</wsdl:fault>
+			<wsdl:fault name="IUVOnlineCreateDatiTestataFault">
+
+				<soap:fault use="literal"
+  				name="IUVOnlineCreateDatiTestataFault" />
+			</wsdl:fault>
+			<wsdl:fault name="IUVOnlineCreateInputFault">
+
+				<soap:fault use="literal"
+  				name="IUVOnlineCreateInputFault" />
+			</wsdl:fault>
+			<wsdl:fault
+  			name="IUVOnlineCreateServizioNonDisponibileFault">
+
+				<soap:fault use="literal"
+  				name="IUVOnlineCreateServizioNonDisponibileFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<wsdl:operation name="IUVOnlineUpdate">
+
+			<soap:operation
+  			soapAction="http://scrittura.iuvonline.nodospcit.ws.popso.it/v1/IUVOnlineUpdate" />
+			<wsdl:input>
+
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="IUVOnlineUpdateApplicationFault">
+
+				<soap:fault use="literal"
+  				name="IUVOnlineUpdateApplicationFault" />
+			</wsdl:fault>
+			<wsdl:fault name="IUVOnlineUpdateSystemFault">
+
+				<soap:fault use="literal"
+  				name="IUVOnlineUpdateSystemFault" />
+			</wsdl:fault>
+			<wsdl:fault name="IUVOnlineUpdateDatiTestataFault">
+
+				<soap:fault use="literal"
+  				name="IUVOnlineUpdateDatiTestataFault" />
+			</wsdl:fault>
+			<wsdl:fault name="IUVOnlineUpdateInputFault">
+
+				<soap:fault use="literal"
+  				name="IUVOnlineUpdateInputFault" />
+			</wsdl:fault>
+			<wsdl:fault
+  			name="IUVOnlineUpdateServizioNonDisponibileFault">
+
+				<soap:fault use="literal"
+  				name="IUVOnlineUpdateServizioNonDisponibileFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<wsdl:operation name="IUVOnlineDelete">
+
+			<soap:operation
+  			soapAction="http://scrittura.iuvonline.nodospcit.ws.popso.it/v1/IUVOnlineDelete" />
+			<wsdl:input>
+
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="IUVOnlineDeleteApplicationFault">
+
+				<soap:fault use="literal"
+  				name="IUVOnlineDeleteApplicationFault" />
+			</wsdl:fault>
+			<wsdl:fault name="IUVOnlineDeleteSystemFault">
+
+				<soap:fault use="literal"
+  				name="IUVOnlineDeleteSystemFault" />
+			</wsdl:fault>
+			<wsdl:fault name="IUVOnlineDeleteDatiTestataFault">
+
+				<soap:fault use="literal"
+  				name="IUVOnlineDeleteDatiTestataFault" />
+			</wsdl:fault>
+			<wsdl:fault name="IUVOnlineDeleteInputFault">
+
+				<soap:fault use="literal"
+  				name="IUVOnlineDeleteInputFault" />
+			</wsdl:fault>
+			<wsdl:fault
+  			name="IUVOnlineDeleteServizioNonDisponibileFault">
+
+				<soap:fault use="literal"
+  				name="IUVOnlineDeleteServizioNonDisponibileFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<wsdl:operation name="getRTList">
+
+			<soap:operation
+  			soapAction="http://scrittura.iuvonline.nodospcit.ws.popso.it/v1/getRTList" />
+			<wsdl:input>
+
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="getRTListApplicationFault">
+
+				<soap:fault use="literal"
+  				name="getRTListApplicationFault" />
+			</wsdl:fault>
+			<wsdl:fault name="getRTListSystemFault">
+
+				<soap:fault use="literal"
+  				name="getRTListSystemFault" />
+			</wsdl:fault>
+			<wsdl:fault name="getRTListDatiTestataFault">
+
+				<soap:fault use="literal"
+  				name="getRTListDatiTestataFault" />
+			</wsdl:fault>
+			<wsdl:fault name="getRTListInputFault">
+
+				<soap:fault use="literal"
+  				name="getRTListInputFault" />
+			</wsdl:fault>
+			<wsdl:fault
+  			name="getRTListServizioNonDisponibileFault">
+
+				<soap:fault use="literal"
+  				name="getRTListServizioNonDisponibileFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<wsdl:operation name="getRTRead">
+
+			<soap:operation
+  			soapAction="http://scrittura.iuvonline.nodospcit.ws.popso.it/v1/getRTRead" />
+			<wsdl:input>
+
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="getRTReadApplicationFault">
+
+				<soap:fault use="literal"
+  				name="getRTReadApplicationFault" />
+			</wsdl:fault>
+			<wsdl:fault name="getRTReadSystemFault">
+
+				<soap:fault use="literal"
+  				name="getRTReadSystemFault" />
+			</wsdl:fault>
+			<wsdl:fault name="getRTReadDatiTestataFault">
+
+				<soap:fault use="literal"
+  				name="getRTReadDatiTestataFault" />
+			</wsdl:fault>
+			<wsdl:fault name="getRTReadInputFault">
+
+				<soap:fault use="literal"
+  				name="getRTReadInputFault" />
+			</wsdl:fault>
+			<wsdl:fault
+  			name="getRTReadServizioNonDisponibileFault">
+
+				<soap:fault use="literal"
+  				name="getRTReadServizioNonDisponibileFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<wsdl:operation name="sendAckRTUpdate">
+
+			<soap:operation
+  			soapAction="http://scrittura.iuvonline.nodospcit.ws.popso.it/v1/sendAckRTUpdate" />
+			<wsdl:input>
+
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="sendAckRTUpdateApplicationFault">
+
+				<soap:fault use="literal"
+  				name="sendAckRTUpdateApplicationFault" />
+			</wsdl:fault>
+			<wsdl:fault name="sendAckRTUpdateSystemFault">
+
+				<soap:fault use="literal"
+  				name="sendAckRTUpdateSystemFault" />
+			</wsdl:fault>
+			<wsdl:fault name="sendAckRTUpdateDatiTestataFault">
+
+				<soap:fault use="literal"
+  				name="sendAckRTUpdateDatiTestataFault" />
+			</wsdl:fault>
+			<wsdl:fault name="sendAckRTUpdateInputFault">
+
+				<soap:fault use="literal"
+  				name="sendAckRTUpdateInputFault" />
+			</wsdl:fault>
+			<wsdl:fault
+  			name="sendAckRTUpdateServizioNonDisponibileFault">
+
+				<soap:fault use="literal"
+  				name="sendAckRTUpdateServizioNonDisponibileFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<wsdl:operation name="getAvvisoPdfRead">
+
+			<soap:operation
+  			soapAction="http://scrittura.iuvonline.nodospcit.ws.popso.it/v1/getAvvisoPdfRead" />
+			<wsdl:input>
+
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="getAvvisoPdfReadApplicationFault">
+
+				<soap:fault use="literal"
+  				name="getAvvisoPdfReadApplicationFault" />
+			</wsdl:fault>
+			<wsdl:fault name="getAvvisoPdfReadSystemFault">
+
+				<soap:fault use="literal"
+  				name="getAvvisoPdfReadSystemFault" />
+			</wsdl:fault>
+			<wsdl:fault name="getAvvisoPdfReadDatiTestataFault">
+
+				<soap:fault use="literal"
+  				name="getAvvisoPdfReadDatiTestataFault" />
+			</wsdl:fault>
+			<wsdl:fault name="getAvvisoPdfReadInputFault">
+
+				<soap:fault use="literal"
+  				name="getAvvisoPdfReadInputFault" />
+			</wsdl:fault>
+			<wsdl:fault
+  			name="getAvvisoPdfReadServizioNonDisponibileFault">
+
+				<soap:fault use="literal"
+  				name="getAvvisoPdfReadServizioNonDisponibileFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+
+
+		<wsdl:operation name="getRicevutaPagamentoPdfRead">
+
+			<soap:operation
+					soapAction="http://scrittura.iuvonline.nodospcit.ws.popso.it/v1/getRicevutaPagamentoPdfRead" />
+			<wsdl:input>
+
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="getRicevutaPagamentoPdfReadApplicationFault">
+
+				<soap:fault use="literal"
+							name="getRicevutaPagamentoPdfReadApplicationFault" />
+			</wsdl:fault>
+			<wsdl:fault name="getRicevutaPagamentoPdfReadSystemFault">
+
+				<soap:fault use="literal"
+							name="getRicevutaPagamentoPdfReadSystemFault" />
+			</wsdl:fault>
+			<wsdl:fault name="getRicevutaPagamentoPdfReadDatiTestataFault">
+
+				<soap:fault use="literal"
+							name="getRicevutaPagamentoPdfReadDatiTestataFault" />
+			</wsdl:fault>
+			<wsdl:fault name="getRicevutaPagamentoPdfReadInputFault">
+
+				<soap:fault use="literal"
+							name="getRicevutaPagamentoPdfReadInputFault" />
+			</wsdl:fault>
+			<wsdl:fault
+					name="getRicevutaPagamentoPdfReadServizioNonDisponibileFault">
+
+				<soap:fault use="literal"
+							name="getRicevutaPagamentoPdfReadServizioNonDisponibileFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+
+	</wsdl:binding>
+	<wsdl:service name="IUVOnlineService_v1">
+		<wsdl:port binding="tns:IUVOnlineServiceScritturaBinding_v1" name="IUVOnlineServiceScritturaPort_v1">
+			<soap:address location="http://localhost/IUVOnlineService_v1/scrittura/IUVOnlineService.ws"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

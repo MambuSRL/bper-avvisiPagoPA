@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://schema.testata.common.ws.popso.it/v8"
+	elementFormDefault="qualified"
+	xmlns:tns="http://schema.testata.common.ws.popso.it/v8"
+	xmlns:tipi-testata="http://schema.tipi.testata.common.ws.popso.it/v8">
+	
+	<xsd:import schemaLocation="TipiTestataSchema_v8.0.xsd" namespace="http://schema.tipi.testata.common.ws.popso.it/v8" /> 
+	
+	
+	<xsd:complexType name="TestataInput">
+		<xsd:sequence>
+			<xsd:element name="testataTecnica" type="tns:TestataTecnicaInput" />
+			<xsd:element name="testataDiContesto" type="tns:TestataDiContesto" />	
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="TestataInputD">
+		<xsd:sequence>
+			<xsd:element name="testataTecnica" type="tns:TestataTecnicaInputD" />
+			<xsd:element name="testataDiContesto" type="tns:TestataDiContesto" />	
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="TestataTecnicaInput">
+		<xsd:sequence>
+			<xsd:element name="idOperazione" type="tns:IdOperazione" />
+			<xsd:element name="idConversazione" type="tipi-testata:StringaNonVuota" />	
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="TestataTecnicaInputD">
+		<xsd:sequence>
+			<xsd:element name="idOperazione" type="tns:IdOperazioneD" />
+			<xsd:element name="idConversazione" type="tipi-testata:StringaNonVuota" />	
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="TestataDiContesto">
+		<xsd:sequence>
+			<xsd:element name="codiceApplicazione" type="tipi-testata:CodiceApplicazione" />
+			<xsd:element name="codiceCanale" type="tipi-testata:CodiceCanale" />	
+			<xsd:element name="codiceIstituto" type="tipi-testata:CodiceAbi" />
+			<xsd:element name="codiceFilialeContabile" type="tipi-testata:CodiceFiliale" />
+			<xsd:element name="codiceDipendenza" type="tipi-testata:CodiceFiliale" />
+			<xsd:element name="identificazioneSoggetti" type="tns:IdentificazioneSoggetti" />	
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="IdentificazioneSoggetti">
+		<xsd:sequence>
+			<xsd:element name="ndg" type="tipi-testata:Ndg" minOccurs="0" />
+			<xsd:element name="utente" type="tipi-testata:Utente" minOccurs="0" />
+			<xsd:element name="esecutore" type="tipi-testata:Ndg" minOccurs="0" />	
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="TestataOutputD">
+		<xsd:sequence>
+		    <xsd:element name="testataTecnica" type="tns:TestataTecnicaOutputD" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="TestataOutput">
+		<xsd:sequence>
+		    <xsd:element name="testataTecnica" type="tns:TestataTecnicaOutput" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="TestataTecnicaOutputD">
+		<xsd:sequence>
+			<xsd:element name="idOperazioneRichiesta" type="tns:IdOperazioneD" />
+			<xsd:element name="idConversazione" type="tipi-testata:StringaNonVuota" />
+			<xsd:element name="codiceOperazioneRisposta" type="tipi-testata:CodiceOperazione" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="TestataTecnicaOutput">
+		<xsd:sequence>
+			<xsd:element name="idOperazioneRichiesta" type="tns:IdOperazione" />
+			<xsd:element name="idConversazione" type="tipi-testata:StringaNonVuota" />
+			<xsd:element name="codiceOperazioneRisposta" type="tipi-testata:CodiceOperazione" nillable="true"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+    <xsd:complexType name="IdOperazione">
+	 <xsd:sequence>
+			<xsd:element name="codiceApplicazioneChiamante" type="tipi-testata:CodiceApplicazione" />
+			<xsd:element name="codiceOperazione" type="tipi-testata:CodiceOperazione" nillable="true"/>
+	</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="IdOperazioneD">
+	 <xsd:sequence>
+			<xsd:element name="codiceApplicazioneChiamante" type="tipi-testata:CodiceApplicazione" />
+			<xsd:element name="codiceOperazione" type="tipi-testata:CodiceOperazione" />
+	</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>
